@@ -1,18 +1,22 @@
-import { Category } from '../constants/categories';
-import { HeaderButtons } from '../constants/header-buttons';
-import { test, expect } from '../fixtures/pages';
+import { HeaderButtons } from '@constraints/header-buttons';
+import { Category } from '@constraints/categories';
+import { test } from '@fixtures/pages';
 
 test.describe('Adding and removing a product from cart', () => {
   const productName = 'Nexus 6';
 
-  test.beforeEach(async ({ homePage, productPage, headerPage }) => {
+  test.beforeEach(async ({ homePage, productPage, headerComponent }) => {
     await homePage.openHomePage();
     await homePage.clickOnTheProductLinkByName(productName);
     await productPage.clickOnAddToCartButton();
-    await headerPage.clickOnTheHeaderButton(HeaderButtons.Cart);
+    await headerComponent.clickOnTheHeaderButton(HeaderButtons.Cart);
   });
 
-  test('Scenario 1: Add a Product to Cart', async ({ cartPage }) => {
+  test('Scenario 1: Add a Product to Cart', async ({
+    cartPage,
+    browserName,
+  }) => {
+    test.skip(browserName !== 'firefox', 'Firefox only!');
     await cartPage.validateItemExists(productName);
   });
 
@@ -23,6 +27,7 @@ test.describe('Adding and removing a product from cart', () => {
 });
 
 test.describe('Navigation on Home page', () => {
+  test.skip(({ browserName }) => browserName !== 'chromium', 'chromium only!');
   const productName = 'Dell 15.6 Inch';
   const productPrice = '$700';
 

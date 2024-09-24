@@ -1,14 +1,14 @@
 import { test as base } from '@playwright/test';
-import CartPage from '../pages/cart';
-import ProductPage from '../pages/product';
-import HeaderPage from '../pages/header';
-import HomePage from '../pages/home';
+import HomePage from '@pages/home';
+import CartPage from '@pages/cart';
+import ProductPage from '@pages/product';
+import HeaderComponent from '@components/header-buttons';
 
 type PageObjectFixtures = {
   homePage: HomePage;
   cartPage: CartPage;
   productPage: ProductPage;
-  headerPage: HeaderPage;
+  headerComponent: HeaderComponent;
 };
 
 export const test = base.extend<PageObjectFixtures>({
@@ -24,8 +24,8 @@ export const test = base.extend<PageObjectFixtures>({
     await use(new ProductPage(page));
   },
 
-  headerPage: async ({ page }, use) => {
-    await use(new HeaderPage(page));
+  headerComponent: async ({ page }, use) => {
+    await use(new HeaderComponent(page));
   },
 });
 

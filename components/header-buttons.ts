@@ -1,7 +1,7 @@
-import { expect, Locator, Page } from '@playwright/test';
-import { HeaderButtons } from '../constants/header-buttons';
+import { Locator, Page } from '@playwright/test';
+import { HeaderButtons } from '@constraints/header-buttons';
 
-export default class HeaderPage {
+export default class HeaderComponent {
   private page: Page;
   private headerButton: Locator;
 

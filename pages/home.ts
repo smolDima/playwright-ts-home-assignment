@@ -1,5 +1,5 @@
 import { expect, Locator, Page } from '@playwright/test';
-import { Category } from '../constants/categories';
+import { Category } from '@constraints/categories';
 
 export default class HomePage {
   private page: Page;
